@@ -12,7 +12,37 @@ namespace AddressBook_Linq
         {
             Console.WriteLine("Welcome to Address book linq problem!");
             AddressBook addressBook = new AddressBook();
-            addressBook.InsertContactToTable();
+            int Option = 0;
+            do
+            {
+                Console.WriteLine("Enter your choice: \n1.Insert a new contact \n" +
+                "2.Display existing contact" +
+                " \n3.Edit existing contact " +
+                " \n4.Exit.");
+                try
+                {
+                    Option = int.Parse(Console.ReadLine());
+                    switch (Option)
+                    {
+                        case 1:
+                            addressBook.InsertContactToTable();
+                            break;
+                        case 2:
+                            addressBook.DisplayDetails();
+                            break;
+                        case 3:
+                            addressBook.EditExistingContact();
+                            break;
+                        default:
+                            Console.WriteLine("Please enter the valid number : ");
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Choose Correct Option...");
+                }
+            } while (Option != 0);
         }
     }
 }

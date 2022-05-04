@@ -26,26 +26,50 @@ namespace AddressBook_Linq
         // UC3 Method to insert data into the address book contact table
         public void InsertContactToTable()
         {
-            Console.Write("\nEnter the first name of the contact : ");
-            string firstName = Console.ReadLine();
-            Console.Write("\nEnter the last name of the contact : ");
-            string lastName = Console.ReadLine();
-            Console.Write("\nEnter the address of the contact : ");
-            string address = Console.ReadLine();
-            Console.Write("\nEnter the city of the contact : ");
-            string city = Console.ReadLine();
-            Console.Write("\nEnter the state of the contact : ");
-            string state = Console.ReadLine();
-            Console.Write("\nEnter the zip code of the contact : ");
-            int zip = Convert.ToInt32(Console.ReadLine());
-            Console.Write("\nEnter the phone number of the contact : ");
-            long phone = Convert.ToInt64(Console.ReadLine());
-            Console.Write("\nEnter the email id of the contact : ");
-            string email = Console.ReadLine();
+            table.Rows.Add("Ajinkya", "Shinde", "Apegaon", "Ambejogai", "Maharashtra", 431517, 8806184089, "shindeaj@gmail.com");
+            table.Rows.Add("Sachin", "Dhage", "Dhanora", "Latur", "Maharashtra", 433546, 8806184087, "dhage@gmail.com");
+            table.Rows.Add("Supriya", "Kadam", "Tadola", "Solapur", "Maharashtra", 411016, 8806184085, "kadamsupriy@gmail.com");
+            table.Rows.Add("Ketaki", "Kulkarni", "Parali", "Beed", "Maharashtra", 400154, 8806184082, "kulkarni@gmail.com");
+            table.Rows.Add("Pratiksha", "Tat", "Kothrude", "Pune", "Maharashtra", 4110343, 9702420754, "pratiksha@gmail.com");
 
-            table.Rows.Add(firstName, lastName, address, city, state, zip, phone, email);
-
-            Console.WriteLine("Contact details added successfully!");
+        }
+        public void DisplayDetails()
+        {
+            foreach (var table in table.AsEnumerable())
+            {
+                // Get all field by column index.
+                Console.WriteLine("\nFirstName:-" + table.Field<string>("FirstName"));
+                Console.WriteLine("LastName:-" + table.Field<string>("LastName"));
+                Console.WriteLine("Address:-" + table.Field<string>("Address"));
+                Console.WriteLine("City:-" + table.Field<string>("City"));
+                Console.WriteLine("State:-" + table.Field<string>("State"));
+                Console.WriteLine("ZipCode:-" + table.Field<string>("Zip"));
+                Console.WriteLine("PhoneNumber:-" + table.Field<string>("PhoneNumber"));
+                Console.WriteLine("Email:-" + table.Field<string>("Email"));
+            }
+        }
+        public void EditExistingContact()
+        {
+            try
+            {
+                string editName = "Pratiksha";
+                var updateData = table.AsEnumerable().Where(x => x.Field<string>("FirstName").Equals(editName)).FirstOrDefault();
+                if (updateData != null)
+                {
+                    updateData.SetField("PhoneNumber", "895478520");
+                    updateData.SetField("City", "Pune");
+                    Console.WriteLine("\n PhoneNumber and ity of {0} updated successfully!", editName);
+                    DisplayDetails();
+                }
+                else
+                {
+                    Console.WriteLine("There is no such record in the Address Book!");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
