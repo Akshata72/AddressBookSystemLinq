@@ -9,10 +9,19 @@ namespace AddressBook_Linq
 {
     class AddressBook
     {
-        public void AddToDataTable()
+        DataTable table = new DataTable("AddressBook");
+        public AddressBook()
         {
-            //// Create a new DataTable.
-            DataTable table = new DataTable();
+            // Here store Type as a field
+            //column Represents all table columns
+            table.Columns.Add("FirstName", typeof(string));
+            table.Columns.Add("LastName", typeof(string));
+            table.Columns.Add("Address", typeof(string));
+            table.Columns.Add("City", typeof(string));
+            table.Columns.Add("State", typeof(string));
+            table.Columns.Add("Zip", typeof(string));
+            table.Columns.Add("PhoneNumber", typeof(string));
+            table.Columns.Add("Email", typeof(string));
         }
     }
 }
