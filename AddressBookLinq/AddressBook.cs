@@ -48,6 +48,7 @@ namespace AddressBook_Linq
                 Console.WriteLine("Email:-" + table.Field<string>("Email"));
             }
         }
+        //UC4- Edit contact from Data Table
         public void EditExistingContact()
         {
             try
@@ -64,6 +65,28 @@ namespace AddressBook_Linq
                 else
                 {
                     Console.WriteLine("There is no such record in the Address Book!");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        //UC5- Delete Data Table
+        public void DeleteContact(string firstName)
+        {
+            try
+            {
+                var rowDelete = table.AsEnumerable().Where(a => a.Field<string>("FirstName").Equals(firstName)).FirstOrDefault();
+                if (rowDelete != null)
+                {
+                    rowDelete.Delete();
+                    Console.WriteLine("\nContact with name '{0}' deleted successfully!", firstName);
+                    DisplayDetails();
+                }
+                else
+                {
+                    Console.WriteLine("There is no such data");
                 }
             }
             catch (Exception e)

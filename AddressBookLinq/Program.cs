@@ -33,6 +33,9 @@ namespace AddressBook_Linq
                         case 3:
                             addressBook.EditExistingContact();
                             break;
+                        case 4:
+                            addressBook.DeleteContact("Sachin");
+                            break;
                         default:
                             Console.WriteLine("Please enter the valid number : ");
                             break;
