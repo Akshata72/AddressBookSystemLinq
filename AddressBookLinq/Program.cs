@@ -12,7 +12,7 @@ namespace AddressBook_Linq
         {
             Console.WriteLine("Welcome to Address book linq problem!");
             AddressBook addressBook = new AddressBook();
-
+            addressBook.InsertContactToTable();
         }
     }
 }
