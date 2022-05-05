@@ -134,5 +134,15 @@ namespace AddressBook_Linq
                 Console.WriteLine("\nFirstName = " + list.FirstName + "\nLastName = " + list.LastName + "\nAddress = " + list.Address + "\nCity = " + list.City + "\nState = " + list.State + "\nZipCode = " + list.ZipCode + "\nPhoneNumber = " + list.PhoneNumber + "\nEmail = " + list.Email);
             }
         }
+        //UC8-Ability to identify each Address Book with name and Type.
+        public void RetrieveNameAndType(List<Contact> contacts)
+        {
+            var RecordedData = contacts.Select(x => new { FirstName = x.FirstName, Type = x.Type });
+            Console.WriteLine("Names with Type: ");
+            foreach (var list in RecordedData)
+            {
+                Console.WriteLine("Name: " + list.FirstName + "====> " + list.Type);
+            }
+        }
     }
 }
