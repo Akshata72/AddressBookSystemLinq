@@ -94,5 +94,30 @@ namespace AddressBook_Linq
                 Console.WriteLine(e.Message);
             }
         }
+        //UC6-Reterive Data By City And State
+        public void retrievePersonByUsingCity(List<Contact>contacts)
+        {
+            Console.WriteLine("Enter a city");
+            string city = Console.ReadLine();
+            var RecordedData = (from contact in contacts
+                                where contact.City == city
+                                select contact);
+             foreach(var list in RecordedData)
+             {
+                Console.WriteLine("\nFirstName = " + list.FirstName + "\nLastName = " + list.LastName + "\nAddress = " + list.Address + "\nCity = " + list.City + "\nState = " + list.State + "\nZipCode = " + list.ZipCode + "\nPhoneNumber = " + list.PhoneNumber + "\nEmail = " + list.Email);
+             }
+        }
+        public void retrievePersonByUsingState(List<Contact>contacts)
+        {
+            Console.WriteLine("Enter a State");
+            string state = Console.ReadLine();
+            var RecordedData = (from contact in contacts
+                                where contact.State == state
+                                select contact);
+            foreach (var list in RecordedData)
+            {
+                Console.WriteLine("\nFirstName = " + list.FirstName + "\nLastName = " + list.LastName + "\nAddress = " + list.Address + "\nCity = " + list.City + "\nState = " + list.State + "\nZipCode = " + list.ZipCode + "\nPhoneNumber = " + list.PhoneNumber + "\nEmail = " + list.Email);
+            }
+        }
     }
 }
