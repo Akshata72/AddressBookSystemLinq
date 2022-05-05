@@ -36,6 +36,7 @@ namespace AddressBook_Linq
                 "\n6.Reterive Data From State" +
                 "\n7.sort Contact Alphabetically For Given City" +
                 "\n8.Retrieve Name And Type" +
+                "\n9.Count by Type" +
                 " \n0.Exit.");
                 try
                 {
@@ -65,6 +66,9 @@ namespace AddressBook_Linq
                             break;
                         case 8:
                             addressBook.RetrieveNameAndType(contact);
+                            break;
+                        case 9:
+                            addressBook.CountByType(contact);
                             break;
                         default:
                             Console.WriteLine("Please enter the valid number : ");

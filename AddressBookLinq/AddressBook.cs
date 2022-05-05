@@ -144,5 +144,16 @@ namespace AddressBook_Linq
                 Console.WriteLine("Name: " + list.FirstName + "====> " + list.Type);
             }
         }
+        //UC9-Ability to get number of contact persons i.e.count by type
+        public void CountByType(List<Contact> contacts)
+        {
+            var RecordedData = contacts.GroupBy(x => x.Type).Select(x => new { Type = x.Key, Count = x.Count() });
+            Console.WriteLine("Count of records by Type: ");
+            foreach (var list in RecordedData)
+            {
+                Console.WriteLine("Type: " + list.Type + "----->" + "Count: " + list.Count);
+
+            }
+        }
     }
 }
